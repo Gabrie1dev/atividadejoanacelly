@@ -1,0 +1,71 @@
+Questão 12 – Sistema de estoque simplificado: Uma loja possui oito produtos, e cada produto tem uma quantidade
+disponível em estoque. Crie um programa que armazene essas quantidades em um vetor e implemente três
+funções: calcularTotalEstoque, que retorne a soma das quantidades de todos os produtos; contarEstoqueBaixo,
+que retorne quantos produtos possuem menos de cinco unidades; e buscarProduto, que receba o vetor e o código
+de um produto e retorne sua posição quando encontrado ou -1 caso não exista. Considere que os produtos
+possuem códigos de 1 a 8 e faça a conversão adequada dos códigos para os índices do vetor
+
+#include <stdio.h>
+
+int calcularTotalEstoque(int estoque[], int tamanho) {
+    int total = 0;
+
+    for (int i = 0; i < tamanho; i++) {
+        total += estoque[i];
+    }
+
+    return total;
+}
+
+int contarEstoqueBaixo(int estoque[], int tamanho) {
+    int contador = 0;
+
+    for (int i = 0; i < tamanho; i++) {
+        if (estoque[i] < 5) {
+            contador++;
+        }
+    }
+
+    return contador;
+}
+
+int buscarProduto(int estoque[], int codigo) {
+    if (codigo >= 1 && codigo <= 8) {
+        return codigo - 1; // converte código para índice
+    }
+
+    return -1;
+}
+
+int main() {
+    int estoque[8];
+    int codigo;
+    int posicao;
+
+    printf("Digite as quantidades dos 8 produtos:\n");
+
+    for (int i = 0; i < 8; i++) {
+        printf("Produto %d: ", i + 1);
+        scanf("%d", &estoque[i]);
+    }
+
+    printf("\nTotal de itens em estoque: %d\n",
+           calcularTotalEstoque(estoque, 8));
+
+    printf("Produtos com estoque baixo (<5): %d\n",
+           contarEstoqueBaixo(estoque, 8));
+
+    printf("\nDigite o codigo do produto (1 a 8): ");
+    scanf("%d", &codigo);
+
+    posicao = buscarProduto(estoque, codigo);
+
+    if (posicao != -1) {
+        printf("Produto encontrado na posicao %d do vetor.\n", posicao);
+        printf("Quantidade em estoque: %d\n", estoque[posicao]);
+    } else {
+        printf("Produto nao encontrado.\n");
+    }
+
+    return 0;
+}

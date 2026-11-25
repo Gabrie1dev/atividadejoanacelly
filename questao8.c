@@ -1,0 +1,32 @@
+Questão 8 - Crie uma função chamada ehPrimo que receba um número inteiro e retorne 1 caso ele seja primo ou
+0 caso contrário. O programa principal deverá solicitar um número e informar o resultado. Considere que números
+menores que 2 não são primos. Como desafio adicional, implemente a verificação testando os divisores somente
+até a raiz quadrada do número, sem utilizar a função sqrt().
+
+#include <stdio.h>
+
+int ehPrimo(int n) {
+    if (n < 2)
+        return 0;
+
+    for (int i = 2; i * i <= n; i++) {
+        if (n % i == 0)
+            return 0;
+    }
+
+    return 1;
+}
+
+int main() {
+    int num;
+
+    printf("Digite um numero: ");
+    scanf("%d", &num);
+
+    if (ehPrimo(num))
+        printf("%d e primo.\n", num);
+    else
+        printf("%d nao e primo.\n", num);
+
+    return 0;
+}

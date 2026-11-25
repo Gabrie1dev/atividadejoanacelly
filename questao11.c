@@ -1,0 +1,70 @@
+Questão 11 – Análise de notas de uma turma: Uma turma possui 10 alunos, e o professor deseja analisar suas
+notas finais. Desenvolva um programa que armazene as notas em um vetor e implemente as seguintes funções:
+calcularMediaTurma, que retorne a média das notas; encontrarMaiorNota, que retorne a maior nota registrada;
+contarAprovados, que retorne a quantidade de alunos com nota maior ou igual a 7,0; e exibirResultados, que
+apresente os resultados calculados. As funções responsáveis pelos cálculos devem retornar os valores, sem
+imprimir diretamente os resultados.
+
+#include <stdio.h>
+
+float calcularMediaTurma(float notas[], int tamanho) {
+    float soma = 0;
+
+    for (int i = 0; i < tamanho; i++) {
+        soma += notas[i];
+    }
+
+    return soma / tamanho;
+}
+
+float encontrarMaiorNota(float notas[], int tamanho) {
+    float maior = notas[0];
+
+    for (int i = 1; i < tamanho; i++) {
+        if (notas[i] > maior) {
+            maior = notas[i];
+        }
+    }
+
+    return maior;
+}
+
+int contarAprovados(float notas[], int tamanho) {
+    int aprovados = 0;
+
+    for (int i = 0; i < tamanho; i++) {
+        if (notas[i] >= 7.0) {
+            aprovados++;
+        }
+    }
+
+    return aprovados;
+}
+
+void exibirResultados(float media, float maiorNota, int aprovados) {
+    printf("\n=== RESULTADOS ===\n");
+    printf("Media da turma: %.2f\n", media);
+    printf("Maior nota: %.2f\n", maiorNota);
+    printf("Quantidade de aprovados: %d\n", aprovados);
+}
+
+int main() {
+    float notas[10];
+    float media, maiorNota;
+    int aprovados;
+
+    printf("Digite as notas dos 10 alunos:\n");
+
+    for (int i = 0; i < 10; i++) {
+        printf("Aluno %d: ", i + 1);
+        scanf("%f", &notas[i]);
+    }
+
+    media = calcularMediaTurma(notas, 10);
+    maiorNota = encontrarMaiorNota(notas, 10);
+    aprovados = contarAprovados(notas, 10);
+
+    exibirResultados(media, maiorNota, aprovados);
+
+    return 0;
+}

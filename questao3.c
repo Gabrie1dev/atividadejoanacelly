@@ -1,0 +1,21 @@
+Questão 3 - Desenvolva uma função chamada maiorNumero que receba dois números inteiros e retorne o maior
+deles. Caso os números sejam iguais, a função deverá retornar qualquer um dos valores.
+
+#include <stdio.h>
+
+int maiorNumero(int a, int b) {
+    if (a >= b)
+        return a;
+
+    return b;
+}
+
+int main() {
+    int a, b;
+
+    scanf("%d %d", &a, &b);
+
+    printf("Maior numero: %d\n", maiorNumero(a, b));
+
+    return 0;
+}

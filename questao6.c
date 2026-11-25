@@ -1,0 +1,60 @@
+Questão 6 - Desenvolva uma calculadora que realize as quatro operações matemáticas básicas: adição,
+subtração, multiplicação e divisão. Implemente uma função para cada operação, recebendo dois números como
+parâmetros e retornando o resultado. O programa deverá ler dois números e uma opção de operação, chamar a
+função correspondente e exibir o resultado. Na divisão, verifique se o divisor é diferente de zero antes de realizar a
+operação.
+
+#include <stdio.h>
+
+float soma(float a, float b) {
+    return a + b;
+}
+
+float subtracao(float a, float b) {
+    return a - b;
+}
+
+float multiplicacao(float a, float b) {
+    return a * b;
+}
+
+float divisao(float a, float b) {
+    return a / b;
+}
+
+int main() {
+    float a, b;
+    int opcao;
+
+    printf("1-Soma\n2-Subtracao\n3-Multiplicacao\n4-Divisao\n");
+    scanf("%d", &opcao);
+
+    printf("Digite dois numeros: ");
+    scanf("%f %f", &a, &b);
+
+    switch (opcao) {
+        case 1:
+            printf("Resultado: %.2f\n", soma(a, b));
+            break;
+
+        case 2:
+            printf("Resultado: %.2f\n", subtracao(a, b));
+            break;
+
+        case 3:
+            printf("Resultado: %.2f\n", multiplicacao(a, b));
+            break;
+
+        case 4:
+            if (b != 0)
+                printf("Resultado: %.2f\n", divisao(a, b));
+            else
+                printf("Erro: divisao por zero.\n");
+            break;
+
+        default:
+            printf("Opcao invalida.\n");
+    }
+
+    return 0;
+}
